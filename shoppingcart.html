@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> Shoppingcart</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+
+		<script type="text/javascript">
+			
+			var cart = [];
+			
+			var items = [
+				{id: 1, name: "Coca Cola", price: 1.99},
+				{id: 2, name: "Fanta", price: 1.99},
+				{id: 3, name: "7-up", price: .99},
+				{id: 4, name: "Cassis", price: 1.01}
+			];
+
+			function getItemById(id){
+				for(var i = 0; i < items.length; i++)
+				{
+					if (items[i].id == id)
+						return items[i];
+				}
+			
+				return null;
+			}
+
+			function display() {
+				var cartDisplay = document.getElementById("cart");
+				var totalPrice = 0;
+				
+				if (cart.length == 0)
+				{
+					cartDisplay.innerHTML = "<tr><td colspan=4>No articles found.</td></tr>";
+					document.getElementById("totalPrice").innerHTML = "&euro;" + totalPrice.toFixed(2);
+					return;
+				}
+				
+				cartDisplay.innerHTML = "";
+				
+				for(var i = 0; i < cart.length; i++)
+				{
+					var row = "<td>"+(i + 1)+"</td> <td>"+cart[i].name+"</td> <td>&euro;"+cart[i].price+"</td> <td><button onclick=\"del("+ i +")\">Delete</button></td>"
+					cartDisplay.innerHTML += "<tr>" + row + "</tr>";
+					
+					totalPrice += cart[i].price;
+				}
+				
+				document.getElementById("totalPrice").innerHTML = "&euro;" + totalPrice.toFixed(2);
+			}
+			
+			function add(id) {
+				cart.push(getItemById(id));
+				
+				display();
+			}
+			
+			function del(index){
+				cart.splice(index, 1);
+				
+				display();
+			}
+			
+			function init() {
+				var itemsDisplay = document.getElementById("items");
+				
+				itemsDisplay.innerHTML = "";
+				
+				for(var i = 0; i < items.length; i++)
+				{
+					var row = "<td>"+(i + 1)+"</td> <td>"+items[i].name+"</td> <td>&euro;"+items[i].price+"</td> <td><button onclick=\"add(" + items[i].id + " )\">Add</button></td>"
+					itemsDisplay.innerHTML += "<tr>" + row + "</tr>";
+				}
+				display();
+			}
+			
+				
+		</script>
+	</head>
+    
+	<body>
+    <div id="content">
+		<h3>This is something fun were you can put an item into a shoppingcart</h3>
+        
+        <h4>Catalog</h4>
+        
+		<div>
+			<table id="options">
+				<thead>
+					<tr> 
+						<th></th>
+						<th>Name</th>
+						<th>Price</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="items"></tbody>
+			</table>		
+		</div>
+		
+		<hr/>
+        
+		<h4>Shoppingcart</h4>
+        
+		<div>
+			<table id="list">
+				<thead>
+					<tr> 
+						<th></th>
+						<th>Name</th>
+						<th>Price</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody id="cart"></tbody>
+				<tfoot>
+					<tr>
+						<td></td>
+						<td>Total</td>
+						<td id="totalPrice"></td>
+					</tr>
+				</tfoot>
+			</table>
+		</div>
+    </div>
+		
+		<script type="text/javascript">
+			init();
+		</script>
+	</body>
+</html>

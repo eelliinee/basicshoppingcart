@@ -1,0 +1,86 @@
+/*delete &#10060;  add &#128722; */
+
+html, body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    margin: 0;
+    background: url(images/background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#content {
+    display: block;
+    padding: 10px;
+    width: 50%;
+    min-height: 90vh;
+    margin: auto;
+    background-color: #fbf0ea;
+    border-radius: 1px;
+    box-shadow: 0 0 0 1px #f7e0d4;
+}
+
+h3 {
+    margin: 0;
+}
+
+h3, th {
+    color: #d36612;
+}
+
+h4 {
+    text-align: center;
+}
+
+hr { 
+    display: block;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+    border-color: #d36612;
+}
+
+button[onclick^="del"]:before {
+    content: "\01F5D9";
+}
+
+button[onclick^="add"]:before {
+    content: "\01F6D2";
+}
+
+table {
+    border-collapse: collapse;
+    margin: auto;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+}
+
+tbody tr {
+    border-bottom: 1px solid #d36612;
+}
+
+tbody tr:hover {
+    background-color: #f7e0d4;
+}
+
+td:nth-child(1) {
+    width: 5%;
+}
+
+td:nth-child(2) {
+    width: 75%;
+}
+
+td:nth-child(3), td:nth-child(4) {
+    width: 10%;
+}
