@@ -1,3 +1,3 @@
 # basicshoppingcart
 This is a very basic shopping cart made with JavaScript and styled with CSS. 
-https://eelliinee.github.io/basicshoppingcart/
+To view in browser: https://eelliinee.github.io/basicshoppingcart/
